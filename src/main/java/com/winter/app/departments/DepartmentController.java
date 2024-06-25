@@ -1,9 +1,13 @@
 package com.winter.app.departments;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/department/*")
@@ -17,9 +21,16 @@ public class DepartmentController {
 	//@controller, service, repository, component(3가지아닌 그외것일때 사용)
 	
 	@RequestMapping(value = "list",method = RequestMethod.GET)
-	public void getList() throws Exception {
+	public void getList(Model model) throws Exception {
 		System.out.println("department list");
-		departmentService.getList();
+		List<DepartmentDTO> ar= departmentService.getList();
+//모델앤뷰객체만들기		
+//		ModelAndView mv= new ModelAndView();
+//		mv.addObject("list", ar);
+//		return mv;
+		
+		//모델하나만 매개변수로 넣기
+		model.addAttribute("list", ar);
 	}
 	
 }
