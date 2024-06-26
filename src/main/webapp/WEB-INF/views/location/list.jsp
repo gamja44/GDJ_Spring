@@ -23,7 +23,7 @@
 				<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>${dto.location_id}</td>
-						<td>${dto.city}</td>
+						<td><a href="detail?location_id=${dto.location_id}">${dto.city}</a></td>
 						<td>${dto.country_id}</td>
 					</tr>
 				</c:forEach>
